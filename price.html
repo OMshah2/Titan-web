@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T.I.T.A.N - Pricing</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  
+
+   
+
+    
+      /* Ensure the body and HTML use the full height */
+      html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      /* Header styling */
+      header {
+        padding-bottom: 15%;
+
+        background-color: #1e293b;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+      }
+    
+      nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+    
+      nav a:hover {
+        text-decoration: underline;
+      }
+    
+      /* Main content area to push footer */
+      .container {
+        flex: 1; /* Allows this section to grow and shrink dynamically */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+    
+      /* Footer styling */
+      footer {
+        background-color: #1e293b;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+      }
+    
+      /* Card styling */
+      .card {
+        background-color: #1e293b;
+        border: 1px solid #1e293b;
+        border-radius: 8px;
+        padding: 20px;
+        width: 280px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+    
+      .card h2 {
+        color: #ffffff;
+      }
+    
+      .card p {
+        color: #fff9f9;
+      }
+    
+      .card button {
+        background-color: #222a33;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    
+      .card button:hover {
+        background-color: #0056b3;
+      }
+    
+      .plan-details {
+        display: none;
+        text-align: left;
+        margin-top: 10px;
+        color: #b6c0ca;
+      }
+    
+      /* Cart Section */
+      #cart-section {
+        background-color: #1e293b;
+        border: 1px solid #007BFF;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 600px;
+        color: #ffffff;
+      }
+    
+      #cart-section h3 {
+        text-align: center;
+        margin: 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #007BFF;
+      }
+    
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+      }
+    
+      .cart-item button {
+        background-color: #e74c3c;
+        color: rgb(13, 54, 141);
+        border: none;
+        padding: 5px 8px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    
+      .total {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+    
+    
+  </style>
+</head>
+<body>
+ <header id="header">
+    <h1>TITAN</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="info.html">Features</a>
+      <a href="price.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container" style="margin-top: 22px;">
+    <div class="card">
+      <h2>Basic Plan</h2>
+      <p>Includes essential features for getting started.</p>
+      <p><strong>$0/month</strong></p>
+      <button class="info-button" onclick="toggleDetails('basic-details')">Info</button>
+      <div class="plan-details" id="basic-details">
+        <ul>
+          <li>Voice chatting</li>
+          <li>Web searches</li>
+          <li>Limited time</li>
+        </ul>
+      </div>
+      <button onclick="addToCart('Basic Plan', 0)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h2>Premium Plan</h2>
+      <p>Unlock advanced features for professionals.</p>
+      <p><strong>$10/month</strong></p>
+      <button class="info-button" onclick="toggleDetails('premium-details')">Info</button>
+      <div class="plan-details" id="premium-details">
+        <ul>
+          <li>Unlimited time</li>
+          <li>App opening</li>
+          <li>Volume control</li>
+          <li>Everything in the Basic Plan</li>
+        </ul>
+      </div>
+      <button onclick="addToCart('Premium Plan', 10)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h2>Team/Business Plan</h2>
+      <p>Perfect for businesses and teams.</p>
+      <p><strong>$7 per person/month</strong></p>
+      <button class="info-button" onclick="toggleDetails('business-details')">Info</button>
+      <div class="plan-details" id="business-details">
+        <ul>
+          <li>Everything in the Premium Plan</li>
+          <li>Custom business integrations</li>
+        </ul>
+        <p>Contact us for team pricing.</p>
+      </div>
+      <button onclick="addToCart('Business Plan Starter Fee', 65)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="cart-section">
+    <h3>Shopping Cart</h3>
+    <div id="cart-items">
+      <p>Your cart is empty.</p>
+    </div>
+    <div class="total" id="total-price">Total: $0</div>
+    <button style="margin-top: 10px; width: 100%;" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 T.I.T.A.N. All Rights Reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    let cartItems = [];
+    let totalPrice = 0;
+
+    function addToCart(plan, price) {
+      cartItems.push({ name: plan, price: price });
+      totalPrice += price;
+      updateCart();
+    }
+
+    function removeFromCart(index) {
+      totalPrice -= cartItems[index].price;
+      cartItems.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      const totalPriceDiv = document.getElementById('total-price');
+
+      cartItemsDiv.innerHTML = '';
+
+      if (cartItems.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+        totalPrice = 0;
+      } else {
+        cartItems.forEach((item, index) => {
+          const cartItemDiv = document.createElement('div');
+          cartItemDiv.className = 'cart-item';
+          cartItemDiv.innerHTML = 
+            `<span>${item.name} - $${item.price}</span>
+            <button onclick="removeFromCart(${index})">Remove</button>`;
+          cartItemsDiv.appendChild(cartItemDiv);
+        });
+      }
+
+      totalPriceDiv.textContent = `Total: $${totalPrice}`;
+    }
+
+    function checkout() {
+      alert('Proceeding to checkout. This is just a placeholder action.');
+    }
+
+    function toggleDetails(detailsId) {
+      const detailsDiv = document.getElementById(detailsId);
+      detailsDiv.style.display = detailsDiv.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

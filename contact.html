@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITAN - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #333;
+      color: white;
+    }
+    #header nav a {
+      color: white;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: 111%
+    }
+   
+    
+    .about, .features, .testimonials, .cta {
+      align-items: center;
+      text-align: center;
+      align-content: center;
+    }
+    .about-content, .about-image, .features-grid, .testimonial-card {
+      margin-bottom: 1rem;
+      align-content: center;
+      text-align: center;
+      
+    }
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .feature-card {
+      text-align: center;
+      width: 200px;
+    }
+    .cta-button {
+      padding: 0.8rem 2rem;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <h1>TITAN</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="info.html">Features</a>
+      <a href="price.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Contact Us</h1>
+      <p>Contact us with any of the following</p>
+    </div>
+    <div class="hero-image">
+      <img src="logo.png" alt="AI Assistant Illustration">
+    </div>
+    <div style="width: 100%; text-align: center; margin-top: 2rem;">
+    </div>
+    <div class="hero-def">
+        <h3><b></b></h3>
+    </div>
+  </section>
+  <div class=" features">
+<center>
+  <section class="about">
+    <div class="about-content" style="width: 100%;">
+      <h2>Ways to contact:</h2>
+
+      <p>
+        <li>Email: Titan@gmail.com</li>
+        <li>Phone: 647-114-1234</li>
+        <li>Instagram: T.I.T.A.N AI</li>
+       <li>Or report a problem down below</li>
+      </p>
+      <a onclick="window.location.href='#report'" class="learn-more-button">Report</a>
+    </center>
+    </div>
+</div>
+  </section>
+ 
+ 
+  <a name="report"></a>
+  <section class="features" id="report">
+    <h2>Report</h2>
+    <form id="reportForm">
+      <b><p>What's the problem?</p></b>
+      <textarea 
+        id="problemInput" 
+        placeholder="Type here..." 
+        style="width:1000px; height:200px;" 
+        required 
+      ></textarea>
+      <p><small>Minimum 50 words, Maximum 400 words.</small></p>
+      
+      <b><p>Provide a form of contact (Email or Phone):</p></b>
+      <input 
+        type="text" 
+        id="contactInput" 
+        placeholder="Enter your email or phone number" 
+        style="width:500px;" 
+        required
+      >
+      <br><br>
+      
+      <input type="submit" value="Submit">
+      <p id="formMessage" style="color:green; display:none;"></p>
+    </form>
+  </section>
+  
+  <script>
+    const form = document.getElementById("reportForm");
+    const problemInput = document.getElementById("problemInput");
+    const contactInput = document.getElementById("contactInput");
+    const formMessage = document.getElementById("formMessage");
+  
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent the form from submitting the traditional way
+  
+      // Get input values
+      const problemText = problemInput.value.trim();
+      const contactText = contactInput.value.trim();
+  
+      // Word count validation
+      const wordCount = problemText.split(/\s+/).filter(word => word).length;
+  
+      if (wordCount < 50) {
+        alert("The problem description must be at least 50 words.");
+        return;
+      }
+  
+      if (wordCount > 400) {
+        alert("The problem description cannot exceed 400 words.");
+        return;
+      }
+  
+      // Check if contact information is provided
+      if (!contactText) {
+        alert("Please provide a form of contact (email or phone).");
+        return;
+      }
+  
+      // Success message and form reset
+      formMessage.textContent = "Thank you! Your report has been submitted.";
+      formMessage.style.display = "block";
+      form.reset(); // Clear the form inputs
+    });
+  </script>
+  
+
+
+  
