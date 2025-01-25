@@ -13,6 +13,7 @@ body {
 /* Header */
 #header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
@@ -22,8 +23,9 @@ body {
   z-index: 100;
 }
 
+
 #header h1 {
-  font-size: 28px;
+  font-size: 25px;
 }
 
 #header nav {
